@@ -1,0 +1,61 @@
+body {
+    color: black;
+    background-color: #d3c692;
+    margin: 4% 6% 3% 6%;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+div.content {
+    background-color: #ffffee;
+    border: 1px solid;
+    padding: 1em 2em;
+    text-align: center;
+}
+
+div.guess input[type="submit"] {
+    width: 12ex;
+}
+
+table.history {
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-spacing: 0;
+    border-collapse: collapse;
+    empty-cells: show;
+}
+
+table.history th {
+    padding: 0.2em 1em;
+    border-left: 1px solid white;
+    border-bottom: 1px solid gray;
+    background-color: gray;
+    color: white;
+}
+
+table.history th:first-child {
+    border-left: 1px solid gray;
+}
+
+table.history td {
+    padding: 0.2em 1em;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+
+div.bad-field-error-message {
+    border:         1px solid;
+    background:     #ecc6c6;
+    padding:        0.5em 2em;
+    margin-top:     1em;
+    margin-bottom:  1em;
+    margin-left:    auto;
+    margin-right:   auto;
+}
+
+*.bad-field {
+    color: red;
+}
