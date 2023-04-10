@@ -1,7 +1,6 @@
 package gui;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -20,6 +19,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+
+import static javax.swing.JOptionPane.showMessageDialog;
 
 import converter.CsvToJson;
 import converter.JsonToCsv;
