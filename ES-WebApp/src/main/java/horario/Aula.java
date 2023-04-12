@@ -35,7 +35,7 @@ public class Aula {
 
 	@Override
 	public String toString() {
-		return "Aula [unidadeCurricular=" + unidadeCurricular + ", horaInicio=" + horaInicio + ", data=" + data + "]";
+		return "Aula [unidadeCurricular=" + unidadeCurricular + "]";
 	}
 
 	public String getCurso() {
