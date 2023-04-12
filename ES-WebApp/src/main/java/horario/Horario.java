@@ -31,7 +31,7 @@ public class Horario {
 	
 	@Override
 	public String toString() {
-		return "Horario [aulas=" + aulas.toString() + "]";
+		return "Horario: " + aulas.size() + " aulas=" + aulas.toString() + "]";
 	}
 	
 }

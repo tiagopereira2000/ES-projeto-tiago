@@ -1,4 +1,4 @@
-<%@ page import = "java.util.*" %><?xml version="1.0" encoding="UTF-8"?>
+<%@ page import = "java.util.*, horario.Horario, horario.Aula, converter.Converter" %><?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html 
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11,7 +11,15 @@
 </head>
 <body>
 
-    <h1>JSP Number Guess</h1>
+<%
+	Aula aula = new Aula("ME","Teoria dos Jogos e dos Contratos", "01789TP01","MEA1","30","Sex","13:00:00","14:30:00","02/12/2022","AA2.25","34");
+
+
+	Horario horario = Converter.csvToJava("src/main/resources/csv/teste2.csv");
+	
+%>
+
+    <h1><%= horario.getAulas().get(0).getUnidadeCurricular() %></h1>
 
     <div class='content'>
 <%

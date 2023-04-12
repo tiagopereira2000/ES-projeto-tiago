@@ -4,8 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.File;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +19,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import horario.Aula;
 
 class ConverterTest {
+	
+	private Aula aula = new Aula("ME","Teoria dos Jogos e dos Contratos", "01789TP01","MEA1","30",
+			"Sex","13:00:00","14:30:00","02/12/2022","AA2.25","34");
 	
 	private String jsonObject = "{\"curso\":\"ME\",\"unidadeCurricular\":\"Teoria dos Jogos e dos Contratos\","
 				+ "\"turno\":\"01789TP01\",\"turma\":\"MEA1\",\"inscritos\":\"30\",\"diaDaSemana\":\"Sex\","
@@ -34,64 +40,63 @@ class ConverterTest {
 			+ "\"turno\":\"03708T02\",\"turma\":\"EI-C6, EI-C5, EI-C4, EI-C3, EI-C2, EI-C1\",\"inscritos\":\"99\","
 			+ "\"diaDaSemana\":\"Seg\",\"horaInicio\":\"14:30:00\",\"horaFim\":\"16:00:00\","
 			+ "\"data\":\"28/11/2022\",\"sala\":\"\",\"lotacao\":\"\"}]";
+	
+	private String jsonObjectWithWeirdCharacters = "{\"Curso\":\"PIUDHIST\",\"Unidade Curricular\":\"SeminÃ¡rio de Projecto I (Piudhist)\","
+			+ "\"Turno\":\"SP-I_(Piudhist)S01\",\"Turma\":\"DHMCMG1\",\"Inscritos no turno\":\"0\","
+			+ "\"Dia da semana\":\"Seg\",\"Hora inÃ­cio da aula\":\"18:00:00\",\"Hora fim da aula\":\"20:00:00\","
+			+ "\"Data da aula\":\"12/12/2022\",\"Sala atribuÃ­da Ã  aula\":\"AA3.24\",\"LotaÃ§Ã£o da sala\":\"30\"}";
 
+	
+//	@Test
+//	void givenCsvReturnsJson() {
+//		File json = new File();
+//		assertEquals(json, Converter.csvToJson(jsonObject).getAulas().getFirst().getCurso());
+//	}
+	
+//	@Test
+//	void givenCsvReturnsJavaObject() {
+//		System.out.println(Converter.csvToJava("src/main/resources/csv/teste2.csv").toString());
+//	}
+	
 	@Test
-	void givenJsonReturnsObject() throws JsonProcessingException {
-		
-		assertEquals(Converter.jsonToJava(jsonObject).getAulas().getFirst().getCurso(), "ME");
+	void givenJsonObjectReturnsJavaObject() {
+		assertEquals("ME", Converter.jsonToJava(jsonObject).getAulas().getFirst().getCurso());
 	}
 	
 	@Test
-	void givenObjectReturnsJson() throws JsonProcessingException {
-		Aula aula = new Aula();
-		String json = Converter.javaToJson(aula);
-		assertEquals(json,Converter.jsonToJava(json));
-	}
-
-	
-	
-	@Test
-	void shouldWriteJsonFileFromObject() {
-		
-		Map<Object, Object> unidadeCurricular1 = new HashMap<Object, Object>();
-		unidadeCurricular1.put("curso", "lei");
-		unidadeCurricular1.put("inscritos", 30);
-		
-		Map<Object, Object> unidadeCurricular2 = new HashMap<Object, Object>();
-		unidadeCurricular2.put("curso", "lige");
-		unidadeCurricular2.put("inscritos", 10);
-		
-		Map<Object, Object> unidadeCurricular3 = new HashMap<Object, Object>();
-		unidadeCurricular3.put("curso", "lcd");
-		unidadeCurricular3.put("inscritos", 2);
-		
-//		List<Object> listaDeUCs = Arrays.asList(unidadeCurricular1, unidadeCurricular2, unidadeCurricular3);
-//		List<Object> listaDeUCs = Arrays.asList(unidadeCurricular1);
-		
-		
-
-//		String json = "{\"curso\":\"lei\",\"inscritos\":30}";
-		
-		assertEquals("lei", unidadeCurricular1.get("curso"));
-//		JsonNode expectedJsonTree = new ObjectMapper().readTree(json);
-       
-//		JsonNode actualJsonTree = new ObjectMapper().readTree(json);
-//		Map<Object,Object> mMap = new HashMap<>();
-//		List<Object> list = new List<>();
-        
-//		ObjectMapper mapper = new ObjectMapper();
-//	    mapper.writeValue(new File(), listaDeUCs);
+	void givenJsonArrayReturnsJavaObject() {
+		assertEquals("ME", Converter.jsonToJava(jsonArray).getAulas().getFirst().getCurso());
+		assertEquals("LETI, LEI, LEI-PL, LIGE, LIGE-PL", Converter.jsonToJava(jsonArray).getAulas().getLast().getCurso());
 	}
 	
 	@Test
-	public void shoudProperlySerializeLocalDateToJson() throws IOException {
-
-		fail("Not yet implemented");
-//	  String actual = new ObjectMapper().writeValueAsString(new Sample());
-//
-//	  assertEquals("{\"orderDate\":\"2015-10-07\"}", actual);
+	void givenJavaObjectReturnsJson() {
+		assertEquals(jsonObject, Converter.javaToJson(aula));
 	}
 	
+	@Test
+	void givenUTF8StringReturnsISOString() throws UnsupportedEncodingException {
+		String UTF8string = "SeminÃ¡rio inÃ­cio LotaÃ§Ã£o";
+
+		String UTF8string2 = "SeminÃ¡rio inÃ­cio LotaÃ§Ã£o atribuÃ­da Ã  aula";
+		assertEquals("Seminário início Lotação atribuída à aula", new String(UTF8string2.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+	}
+	
+//	@Test//TODO
+//	void givenJsonArrayReturnsCsv() {
+//		Converter.jsonToCsv("src/test/resources/json/teste2.json", "src/test/resources/csv/teste.csv");
+//		File expected = new File("src/test/resources/csv/teste2.csv");
+//		File actual = new File("src/test/resources/csv/teste.csv");
+//		assertEquals(expected, actual);
+//	}
+//	
+//	@Test//TODO
+//	void givenCsvReturnsJson() {
+//		Converter.csvToJson("src/test/resources/csv/teste2.csv", "src/test/resources/json/teste2.json");
+//		File jsonFile = new File("src/test/resources/json/teste2.json");
+//		assertEquals(jsonObject, "" );
+//	}
+
 	@Test
     void deserializeJson() throws IOException {
         String json = "{\"curso\":\"lei\",\"inscritos\":30}";
