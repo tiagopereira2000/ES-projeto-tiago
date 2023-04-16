@@ -15,11 +15,11 @@
 	Aula aula = new Aula("ME","Teoria dos Jogos e dos Contratos", "01789TP01","MEA1","30","Sex","13:00:00","14:30:00","02/12/2022","AA2.25","34");
 
 
-	Horario horario = Converter.csvToJava("src/main/resources/csv/teste2.csv");
+	//Horario horario = Converter.csvToJava("src/main/resources/csv/teste2.csv");
 	
 %>
 
-    <h1><%= horario.getAulas().get(0).getUnidadeCurricular() %></h1>
+<%--     <h1><%= horario.getAulas().get(0).getUnidadeCurricular() %></h1> --%>
 
     <div class='content'>
 <%

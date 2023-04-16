@@ -1,10 +1,5 @@
-curso,unidadeCurricular,turno,turma,inscritos,diaDaSemana,horaInicio,horaFim,data,sala,lotacao
-ME,"Teoria dos Jogos e dos Contratos",01789TP01,MEA1,30,Sex,13:00:00,14:30:00,02/12/2022,AA2.25,34
-ME,"Teoria dos Jogos e dos Contratos",01789TP01,MEA1,30,Qua,13:00:00,14:30:00,23/11/2022,AA2.25,34
-ME,"Teoria dos Jogos e dos Contratos",01789TP01,MEA1,30,Qua,13:00:00,14:30:00,16/11/2022,AA2.25,34
-ME,"Teoria dos Jogos e dos Contratos",01789TP01,MEA1,30,Qua,13:00:00,14:30:00,09/11/2022,AA2.25,34
-ME,"Teoria dos Jogos e dos Contratos",01789TP01,MEA1,30,Qua,13:00:00,14:30:00,02/11/2022,AA2.25,34
-ME,"Teoria dos Jogos e dos Contratos",01789TP01,MEA1,30,Seg,13:00:00,14:30:00,28/11/2022,AA2.25,34
-ME,"Teoria dos Jogos e dos Contratos",01789TP01,MEA1,30,Seg,13:00:00,14:30:00,21/11/2022,AA2.25,34
-ME,"Teoria dos Jogos e dos Contratos",01789TP01,MEA1,30,Seg,13:00:00,14:30:00,14/11/2022,AA2.25,34
-ME,"Teoria dos Jogos e dos Contratos",01789TP01,MEA1,30,Seg,13:00:00,14:30:00,07/11/2022,AA2.25,34
+"Inscritos no turno",Turma,Turno,"Hora inicio da aula","Lotacao da sala","Hora fim da aula",Curso,"Unidade Curricular","Dia da semana","Data da aula","Sala atribuida a aula"
+30,MEA1,01789TP01,13:00:00,34,14:30:00,ME,"Teoria dos Jogos e dos Contratos",Sex,02/12/2022,AA2.25
+52,"EI-A6, EI-A5, EI-A4, EI-A3, EI-A2, EI-A1",03703TP02,14:30:00,80,16:00:00,"LETI, LEI, LEI-PL","Cálculo I",Qui,15/12/2022,C6.10
+35,FCC2,M8642TP01,11:00:00,68,12:30:00,LFC,"Reporte Financeiro",Qua,16/11/2022,C4.06
+12,"ET-C4, ET-C3",03708PL07,11:00:00,66,12:30:00,"LETI, LEI, LEI-PL, LIGE, LIGE-PL","Arquitetura de Redes",Qui,17/11/2022,C7.06

@@ -1,11 +1,31 @@
 package horario;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Aula {
 	
-	private String curso, unidadeCurricular, turno, turma, inscritos, diaDaSemana,
-	horaInicio, horaFim, data,
-	sala, lotacao;
-
+	@JsonProperty("Curso")
+    private String curso;
+    @JsonProperty("Unidade Curricular")
+    private String unidadeCurricular;
+    @JsonProperty("Turno")
+    private String turno;
+    @JsonProperty("Turma")
+    private String turma;
+    @JsonProperty("Inscritos no turno")
+    private String inscritos;
+    @JsonProperty("Dia da semana")
+    private String diaDaSemana;
+    @JsonProperty("Hora inicio da aula")
+    private String horaInicio;
+    @JsonProperty("Hora fim da aula")
+    private String horaFim;
+    @JsonProperty("Data da aula")
+    private String data;
+    @JsonProperty("Sala atribuida a aula")
+    private String sala;
+    @JsonProperty("Lotacao da sala")
+    private String lotacao;
 	
 	public Aula(String curso, String unidadeCurricular, String turno, String turma, String inscritos,
 			String diaDaSemana, String horaInicio, String horaFim, String data, String sala, String lotacao) {
