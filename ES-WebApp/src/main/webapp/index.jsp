@@ -14,21 +14,45 @@
 
 <%
 	Aula aula = new Aula("ME","Teoria dos Jogos e dos Contratos", "01789TP01","MEA1","30","Sex","13:00:00","14:30:00","02/12/2022","AA2.25","34");
-
-
 	//Horario horario = Converter.csvToJava("teste2.csv");
-	
 %>
 
+	<h1>Visualizador de horarios</h1>
 	
-    
-	
-
     <div class='content'>
-		<h1>Melhor visualizador de horarios</h1>
-<%--    	 	<h2>Aulas no horario: <%= horario.getAulas().size() %></h2> --%>
-		<h2>Visualizar horario</h2>
-		<h2>Importar outro horario</h2>
+
+<%  
+	String utilizador = request.getParameter("name")+"";
+	if(!utilizador.equals("null")) {
+%>
+		<h2>Bem vindo <%=utilizador%></h2>
+<%
+	} else {
+%>
+		<h2>Bem vindo!</h2>
+		
+		<form method="post" action="/">
+			<label for="name" >Indique o seu nome: </label>
+			<input type="text" id="name" name="name"></input>
+			<button type="submit">Submeter</button>
+		</form>
+<% 
+	}
+%>
+	<br></br>
+
+		<h2>Visualizar horarios:</h2>
+		
+		<p><a href="/horario">Horario1</a></p>
+		
+	<br></br>
+		
+		<h2>Importar horarios</h2>
+		<form method="post" action="UploadServlet" enctype="multipart/form-data">
+			<input type="file" name="file" value="" multiple="multiple"></input>
+			<input type="submit" value="Import"></input>
+		</form>
+		
     </div>
 
 </body>
