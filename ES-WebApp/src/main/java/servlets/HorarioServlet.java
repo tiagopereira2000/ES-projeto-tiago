@@ -1,7 +1,12 @@
 package servlets;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 
 import converter.Converter;
@@ -22,11 +27,21 @@ public class HorarioServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		URL resource = getServletContext().getResource("/WEB-INF/resources/teste4.json");
+		//URL resource = getServletContext().getResource("/WEB-INF/resources/teste4.json");
 		
-		horario = Converter.jsonToJava(resource.getPath());
+		String mainPath = "";
+        try {
+            URI uri = getServletContext().getResource("/WEB-INF/resources/").toURI();
+            mainPath = Paths.get(uri).toString();
+
+        } catch (MalformedURLException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+        Path path = Paths.get(mainPath, "teste4.json");
+		
+		
+        horario = Converter.jsonToJava(path.toString());
 		request.setAttribute("horario", horario);
-		System.out.println(horario);
 		
 		getServletContext().getRequestDispatcher("/horario.jsp").forward(request, response);
 		
