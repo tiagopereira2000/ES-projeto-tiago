@@ -1,10 +1,12 @@
 package horario;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Horario {
-	
+public class Horario implements Serializable{
 
+	private static final long serialVersionUID = 7968214254027967074L;
+	
 	private LinkedList<Aula> aulas;
 	
 	public Horario() {

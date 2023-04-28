@@ -1,8 +1,12 @@
 package horario;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Aula {
+public class Aula implements Serializable{
+	
+	private static final long serialVersionUID = 6528857634606511979L;
 	
 	@JsonProperty("Curso")
     private String curso;
